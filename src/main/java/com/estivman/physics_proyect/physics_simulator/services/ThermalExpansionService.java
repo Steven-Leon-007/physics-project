@@ -15,8 +15,8 @@ public class ThermalExpansionService implements IThermalExpansionService {
 
     public ThermalExpansionService() {
         MaterialJsonReader materialJsonReader = new MaterialJsonReader();
-        solidMaterialsList = materialJsonReader.loadSolidMaterials();
-        liquidMaterialsList = materialJsonReader.loadLiquidMaterials();
+        this.solidMaterialsList = materialJsonReader.loadSolidMaterials();
+        this.liquidMaterialsList = materialJsonReader.loadLiquidMaterials();
     }
 
     @Override
