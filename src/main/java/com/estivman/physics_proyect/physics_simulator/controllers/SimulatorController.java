@@ -37,7 +37,7 @@ public class SimulatorController {
 
     // Under here third endpoint
 
-    @PostMapping
+    @PostMapping("/calculateCompositeSystem")
     public String[] calculateCompositeSystemExpansion(@RequestBody String solidMaterialName,
             double solidInitialTemperature,
             double solidFinalTemperature, double solidInitialDimension,
