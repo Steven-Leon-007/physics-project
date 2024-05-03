@@ -12,6 +12,11 @@ import com.estivman.physics_proyect.physics_simulator.utils.ExpansionTypeEnum;
 public class ThermalExpansionService implements IThermalExpansionService {
     private List<Material> materialsList = new ArrayList<Material>();
 
+    public ThermalExpansionService() {
+        //Here should be the logic of loading the list of materials from JSON Files. 
+        materialsList = new ArrayList<Material>();
+    }
+
     @Override
     public Material searchElement(String materialName) {
         // TODO Auto-generated method stub
