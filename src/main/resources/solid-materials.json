@@ -1,0 +1,122 @@
+[
+  {
+    "name": "DIAMANTE",
+    "thermalExpansionCoefficient": "0.0000009",
+    "texturePath": "/assets/images/diamond-texture.webp",
+    "materialImagePath": "/assets/images/diamond-image.webp"
+  },
+  {
+    "name": "ORO",
+    "thermalExpansionCoefficient": "0.000014",
+    "texturePath": "/assets/images/gold-texture.webp",
+    "materialImagePath": "/assets/images/gold-image.webp"
+  },
+  {
+    "name": "PLATA",
+    "thermalExpansionCoefficient": "0.000019",
+    "texturePath": "/assets/images/silver-texture.webp",
+    "materialImagePath": "/assets/images/silver-image.webp"
+  },
+  {
+    "name": "ALUMINIO",
+    "thermalExpansionCoefficient": "0.000024",
+    "texturePath": "/assets/images/aluminum-texture.webp",
+    "materialImagePath": "/assets/images/aluminum-image.webp"
+  },
+  {
+    "name": "FIBRA DE CARBONO",
+    "thermalExpansionCoefficient": "-0.000018",
+    "texturePath": "/assets/images/carbon-fiber-texture.webp",
+    "materialImagePath": "/assets/images/carbon-fiber-image.webp"
+  },
+  {
+    "name": "ZINC",
+    "thermalExpansionCoefficient": "0.000026",
+    "texturePath": "/assets/images/zinc-texture.webp",
+    "materialImagePath": "/assets/images/zinc-image.webp"
+  },
+  {
+    "name": "MADERA DE ROBLE",
+    "thermalExpansionCoefficient": "0.000054",
+    "texturePath": "/assets/images/oak-wood-texture.webp",
+    "materialImagePath": "/assets/images/oak-wood-image.webp"
+  },
+  {
+    "name": "ABETO",
+    "thermalExpansionCoefficient": "0.0000035",
+    "texturePath": "/assets/images/fir-texture.webp",
+    "materialImagePath": "/assets/images/fir-image.webp"
+  },
+  {
+    "name": "TUNGSTENO",
+    "thermalExpansionCoefficient": "0.0000045",
+    "texturePath": "/assets/images/tungsten-texture.webp",
+    "materialImagePath": "/assets/images/tungsten-image.webp"
+  },
+  {
+    "name": "CUARZO",
+    "thermalExpansionCoefficient": "0.0000004",
+    "texturePath": "/assets/images/quartz-texture.webp",
+    "materialImagePath": "/assets/images/quartz-image.webp"
+  },
+  {
+    "name": "LATON Y BRONCE",
+    "thermalExpansionCoefficient": "0.000019",
+    "texturePath": "/assets/images/brass&bronze-texture.webp",
+    "materialImagePath": "/assets/images/brass&bronze-image.webp"
+  },
+  {
+    "name": "CONCRETO",
+    "thermalExpansionCoefficient": "0.000012",
+    "texturePath": "/assets/images/concrete-texture.webp",
+    "materialImagePath": "/assets/images/concrete-image.webp"
+  },
+  {
+    "name": "COBRE",
+    "thermalExpansionCoefficient": "0.000017",
+    "texturePath": "/assets/images/copper-texture.webp",
+    "materialImagePath": "/assets/images/copper-image.webp"
+  },
+  {
+    "name": "VIDRIO ORDINARIO",
+    "thermalExpansionCoefficient": "0.000009",
+    "texturePath": "/assets/images/ordinary-glass-texture.webp",
+    "materialImagePath": "/assets/images/ordinary-glass-image.webp"
+  },
+  {
+    "name": "VIDRIO PYREX",
+    "thermalExpansionCoefficient": "0.0000032",
+    "texturePath": "/assets/images/pyrex-glass-texture.webp",
+    "materialImagePath": "/assets/images/pyrex-glass-image.webp"
+  },
+  {
+    "name": "INVAR",
+    "thermalExpansionCoefficient": "0.0000009",
+    "texturePath": "/assets/images/invar-texture.webp",
+    "materialImagePath": "/assets/images/invar-image.webp"
+  },
+  {
+    "name": "PLOMO",
+    "thermalExpansionCoefficient": "0.000029",
+    "texturePath": "/assets/images/lead-texture.webp",
+    "materialImagePath": "/assets/images/lead-image.webp"
+  },
+  {
+    "name": "ACERO",
+    "thermalExpansionCoefficient": "0.000011",
+    "texturePath": "/assets/images/steel-texture.webp",
+    "materialImagePath": "/assets/images/steel-image.webp"
+  },
+  {
+    "name": "GRAFITO",
+    "thermalExpansionCoefficient": "0.000008",
+    "texturePath": "/assets/images/graphite-texture.webp",
+    "materialImagePath": "/assets/images/graphite-image.webp"
+  },
+  {
+    "name": "ZAFIRO",
+    "thermalExpansionCoefficient": "0.0000053",
+    "texturePath": "/assets/images/sapphire-texture.webp",
+    "materialImagePath": "/assets/images/sapphire-image.webp"
+  }
+]
