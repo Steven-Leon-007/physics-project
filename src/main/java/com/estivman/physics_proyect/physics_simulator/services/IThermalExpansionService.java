@@ -10,6 +10,6 @@ public interface IThermalExpansionService {
             double finalTemperature, double initialDimension, double finalDimension);
 
     public String[] calculateCompositeSystemExpansion(String solidMaterialName, double solidInitialTemperature,
-    double solidFinalTemperature, double solidInitialDimension, double solidFinalDimension,String liquidMaterialName,double liquidInitialTemperature,
-    double liquidFinalTemperature, double liquidInitialDimension, double liquidFinalDimension);
+    double solidFinalTemperature, double solidInitialDimension,String liquidMaterialName,double liquidInitialTemperature,
+    double liquidFinalTemperature, double liquidInitialDimension);
 }

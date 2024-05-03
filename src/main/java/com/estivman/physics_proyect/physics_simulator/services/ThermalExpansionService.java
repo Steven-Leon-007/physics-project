@@ -10,7 +10,7 @@ import com.estivman.physics_proyect.physics_simulator.utils.ExpansionTypeEnum;
 
 @Service
 public class ThermalExpansionService implements IThermalExpansionService {
-    private List<Material> materialsList = new ArrayList<Material>();
+    private List<Material> materialsList;
 
     public ThermalExpansionService() {
         //Here should be the logic of loading the list of materials from JSON Files. 
@@ -32,9 +32,9 @@ public class ThermalExpansionService implements IThermalExpansionService {
 
     @Override
     public String[] calculateCompositeSystemExpansion(String solidMaterialName, double solidInitialTemperature,
-            double solidFinalTemperature, double solidInitialDimension, double solidFinalDimension,
+            double solidFinalTemperature, double solidInitialDimension,
             String liquidMaterialName, double liquidInitialTemperature, double liquidFinalTemperature,
-            double liquidInitialDimension, double liquidFinalDimension) {
+            double liquidInitialDimension) {
 
                 String [] expansionResults = new String[2];
                 //Liquid expansion, at String[0].

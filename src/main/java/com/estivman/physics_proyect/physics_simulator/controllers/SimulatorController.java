@@ -35,15 +35,15 @@ public class SimulatorController {
 
     @GetMapping()
     public String[] calculateCompositeSystemExpansion(@RequestBody String solidMaterialName, double solidInitialTemperature,
-    double solidFinalTemperature, double solidInitialDimension, double solidFinalDimension,
+    double solidFinalTemperature, double solidInitialDimension,
     String liquidMaterialName, double liquidInitialTemperature, double liquidFinalTemperature,
-    double liquidInitialDimension, double liquidFinalDimension){
+    double liquidInitialDimension){
 
         //The position 0 in the array equals to the liquid expansion
         //The position 1 in the array equals to the solid expansion
         return thermalExpansionService.calculateCompositeSystemExpansion(solidMaterialName, solidInitialTemperature,
-        solidFinalTemperature, solidInitialDimension, solidFinalDimension, liquidMaterialName, liquidInitialTemperature,
-        liquidFinalTemperature, liquidInitialDimension, liquidFinalDimension);
+        solidFinalTemperature, solidInitialDimension, liquidMaterialName, liquidInitialTemperature,
+        liquidFinalTemperature, liquidInitialDimension);
 
     }
 
