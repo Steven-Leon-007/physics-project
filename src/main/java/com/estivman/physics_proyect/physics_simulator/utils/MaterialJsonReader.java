@@ -13,7 +13,7 @@ import com.google.gson.stream.JsonReader;
 
 public class MaterialJsonReader {
 
-    public static List<Material> loadSolidMaterials() {
+    public List<Material> loadSolidMaterials() {
         Gson gson = new Gson();
         Type listType = new TypeToken<List<Material>>() {
         }.getType();
@@ -27,7 +27,7 @@ public class MaterialJsonReader {
         return materials;
     }
 
-    public static List<Material> loadLiquidMaterials() {
+    public List<Material> loadLiquidMaterials() {
         Gson gson = new Gson();
         Type listType = new TypeToken<List<Material>>() {
         }.getType();

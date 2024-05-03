@@ -2,6 +2,7 @@ package com.estivman.physics_proyect.physics_simulator.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +34,7 @@ public class SimulatorController {
 
     // Under here third endpoint
 
-    @GetMapping()
+    @PostMapping
     public String[] calculateCompositeSystemExpansion(@RequestBody String solidMaterialName, double solidInitialTemperature,
     double solidFinalTemperature, double solidInitialDimension,
     String liquidMaterialName, double liquidInitialTemperature, double liquidFinalTemperature,

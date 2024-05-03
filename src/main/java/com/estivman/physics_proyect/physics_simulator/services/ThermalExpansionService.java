@@ -1,33 +1,57 @@
 package com.estivman.physics_proyect.physics_simulator.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.estivman.physics_proyect.physics_simulator.models.Material;
 import com.estivman.physics_proyect.physics_simulator.utils.ExpansionTypeEnum;
+import com.estivman.physics_proyect.physics_simulator.utils.MaterialJsonReader;
 
 @Service
 public class ThermalExpansionService implements IThermalExpansionService {
-    private List<Material> materialsList;
+    private List<Material> solidMaterialsList;
+    private List<Material> liquidMaterialsList;
 
     public ThermalExpansionService() {
-        //Here should be the logic of loading the list of materials from JSON Files. 
-        materialsList = new ArrayList<Material>();
+        MaterialJsonReader materialJsonReader = new MaterialJsonReader();
+        solidMaterialsList = materialJsonReader.loadSolidMaterials();
+        liquidMaterialsList = materialJsonReader.loadLiquidMaterials();
     }
 
     @Override
-    public Material searchElement(String materialName) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'searchElement'");
+    public Material searchSolidElement(String solidMaterialName) {
+        Material foundMaterial = new Material();
+        boolean isFound = false;
+        for (int i = 0; i < solidMaterialsList.size() && !isFound; i++) {
+            if (solidMaterialsList.get(i).getName().equals(solidMaterialName)) {
+                foundMaterial = solidMaterialsList.get(i);
+                isFound = true;
+            }
+        }
+        return foundMaterial;
     }
+
+    public Material searchLiquidElement(String liquidMaterialName) {
+        Material foundMaterial = new Material();
+        boolean isFound = false;
+        for (int i = 0; i < liquidMaterialsList.size() && !isFound; i++) {
+            if (liquidMaterialsList.get(i).getName().equals(liquidMaterialName)) {
+                foundMaterial = liquidMaterialsList.get(i);
+                isFound = true;
+            }
+        }
+        return foundMaterial;
+    }
+
 
     @Override
     public String calcExpansion(String materialName, ExpansionTypeEnum expansionType, double initialTemperature,
-            double finalTemperature, double initialDimension, double finalDimension) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'calcExpansion'");
+            double finalTemperature, double initialDimension) {
+
+        String expansionResult = searchSolidElement(materialName).calculateExpansion(expansionType, initialTemperature,
+                finalTemperature, initialDimension);
+        return expansionResult;
     }
 
     @Override
@@ -36,13 +60,13 @@ public class ThermalExpansionService implements IThermalExpansionService {
             String liquidMaterialName, double liquidInitialTemperature, double liquidFinalTemperature,
             double liquidInitialDimension) {
 
-                String [] expansionResults = new String[2];
-                //Liquid expansion, at String[0].
-                expansionResults[0] = calcExpansion(liquidMaterialName, ExpansionTypeEnum.VOLUMETRIC, liquidInitialTemperature, liquidFinalTemperature, liquidInitialDimension, liquidFinalDimension);
-                //Solid expansion, at String[1].
-                expansionResults[1] = calcExpansion(solidMaterialName, ExpansionTypeEnum.VOLUMETRIC, solidInitialTemperature, solidFinalTemperature, solidInitialDimension, solidFinalDimension);
-                return expansionResults;
-            }
+        String[] expansionResults = new String[2];
+        // Liquid expansion, at String[0].
+        expansionResults[0] = searchLiquidElement(liquidMaterialName).calculateExpansion(ExpansionTypeEnum.VOLUMETRIC,liquidInitialTemperature,liquidFinalTemperature,liquidInitialDimension);
+        // Solid expansion, at String[1].
+        expansionResults[1] = calcExpansion(solidMaterialName, ExpansionTypeEnum.VOLUMETRIC, solidInitialTemperature,
+                solidFinalTemperature, solidInitialDimension);
+        return expansionResults;
+    }
 
-    
 }
