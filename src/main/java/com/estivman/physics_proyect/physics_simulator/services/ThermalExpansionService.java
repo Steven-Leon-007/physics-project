@@ -69,4 +69,11 @@ public class ThermalExpansionService implements IThermalExpansionService {
         return expansionResults;
     }
 
+    public List<Material> getSolidMaterialsList() {
+        return solidMaterialsList;
+    }
+
+    public List <Material> getLiquidMaterialsList() {
+        return liquidMaterialsList;
+    }
 }
