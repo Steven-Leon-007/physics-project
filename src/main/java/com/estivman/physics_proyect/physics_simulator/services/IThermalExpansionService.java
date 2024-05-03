@@ -9,6 +9,7 @@ public interface IThermalExpansionService {
     public String calcExpansion(String materialName, ExpansionTypeEnum expansionType, double initialTemperature,
             double finalTemperature, double initialDimension, double finalDimension);
 
-    // Here should be the method for composed systems, but I'll let that to the
-    // person who must do it :D
+    public String[] calculateCompositeSystemExpansion(String solidMaterialName, double solidInitialTemperature,
+    double solidFinalTemperature, double solidInitialDimension, double solidFinalDimension,String liquidMaterialName,double liquidInitialTemperature,
+    double liquidFinalTemperature, double liquidInitialDimension, double liquidFinalDimension);
 }
