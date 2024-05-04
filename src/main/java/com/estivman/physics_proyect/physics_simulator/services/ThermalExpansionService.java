@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.estivman.physics_proyect.physics_simulator.models.Material;
 import com.estivman.physics_proyect.physics_simulator.utils.ExpansionTypeEnum;
 import com.estivman.physics_proyect.physics_simulator.utils.MaterialJsonReader;
+import com.estivman.physics_proyect.physics_simulator.utils.SearchElement;
 
 @Service
 public class ThermalExpansionService implements IThermalExpansionService {
@@ -21,27 +22,12 @@ public class ThermalExpansionService implements IThermalExpansionService {
 
     @Override
     public Material searchSolidElement(String solidMaterialName) {
-        Material foundMaterial = new Material();
-        boolean isFound = false;
-        for (int i = 0; i < solidMaterialsList.size() && !isFound; i++) {
-            if (solidMaterialsList.get(i).getName().equals(solidMaterialName)) {
-                foundMaterial = solidMaterialsList.get(i);
-                isFound = true;
-            }
-        }
-        return foundMaterial;
+       return SearchElement.searchElement(solidMaterialName, solidMaterialsList);
     }
 
+    @Override
     public Material searchLiquidElement(String liquidMaterialName) {
-        Material foundMaterial = new Material();
-        boolean isFound = false;
-        for (int i = 0; i < liquidMaterialsList.size() && !isFound; i++) {
-            if (liquidMaterialsList.get(i).getName().equals(liquidMaterialName)) {
-                foundMaterial = liquidMaterialsList.get(i);
-                isFound = true;
-            }
-        }
-        return foundMaterial;
+               return SearchElement.searchElement(liquidMaterialName, solidMaterialsList);
     }
 
 
