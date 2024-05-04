@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.estivman.physics_proyect.physics_simulator.models.Material;
 import com.estivman.physics_proyect.physics_simulator.services.ThermalExpansionService;
+import com.estivman.physics_proyect.physics_simulator.utils.ExpansionTypeEnum;
 
 @RestController
 @RequestMapping("/")
@@ -36,7 +37,14 @@ public class SimulatorController {
     // Under here second endpoint
 
     // Under here third endpoint
-   
+    @PostMapping("/calculateExpansionSystem")
+    public String postMethodName(@RequestBody String solidMaterialName,
+    double solidInitialTemperature,
+    double solidFinalTemperature, double solidInitialDimension, ExpansionTypeEnum expansionType){
+
+        return thermalExpansionService.calcExpansion(solidMaterialName, expansionType, solidInitialTemperature, solidFinalTemperature, solidInitialDimension);
+    }
+    
     @PostMapping("/calculateCompositeSystem")
     public String[] calculateCompositeSystemExpansion(@RequestBody String solidMaterialName,
             double solidInitialTemperature,
