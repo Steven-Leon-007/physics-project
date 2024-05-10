@@ -19,6 +19,8 @@ public class Material implements IMaterial {
     private String thermalExpansionCoefficient;
     private String texturePath;
     private String materialImagePath;
+    private String minTemperature;
+    private String maxTemperature;
 
     @Override
     public String calculateExpansion(ExpansionTypeEnum ExpansionType, double initialTemperature, double finalTemperature, double initialDimension) {
