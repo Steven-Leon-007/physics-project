@@ -34,7 +34,6 @@ public class ThermalExpansionService implements IThermalExpansionService {
     @Override
     public String calcExpansion(String materialName, ExpansionTypeEnum expansionType, double initialTemperature,
             double finalTemperature, double initialDimension) {
-
         String expansionResult = searchSolidElement(materialName).calculateExpansion(expansionType, initialTemperature,
                 finalTemperature, initialDimension);
         return expansionResult;
@@ -46,12 +45,14 @@ public class ThermalExpansionService implements IThermalExpansionService {
             String liquidMaterialName, double liquidInitialTemperature, double liquidFinalTemperature,
             double liquidInitialDimension) {
 
-        String[] expansionResults = new String[2];
+        String[] expansionResults = new String[3];
         // Liquid expansion, at String[0].
         expansionResults[0] = searchLiquidElement(liquidMaterialName).calculateExpansion(ExpansionTypeEnum.VOLUMETRIC,liquidInitialTemperature,liquidFinalTemperature,liquidInitialDimension);
         // Solid expansion, at String[1].
         expansionResults[1] = calcExpansion(solidMaterialName, ExpansionTypeEnum.VOLUMETRIC, solidInitialTemperature,
                 solidFinalTemperature, solidInitialDimension);
+        // Liquid spilled, at String[2].
+        expansionResults[3] = Integer.parseInt(expansionResults[0])+liquidInitialDimension > Integer.parseInt(expansionResults[1])+solidInitialDimension ? (""+ (Integer.parseInt(expansionResults[0])+liquidInitialDimension - Integer.parseInt(expansionResults[1])+solidInitialDimension)): "0";
         return expansionResults;
     }
 
