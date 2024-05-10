@@ -3,6 +3,7 @@ package com.estivman.physics_proyect.physics_simulator.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -59,12 +60,12 @@ public class SimulatorController {
                 liquidFinalTemperature, liquidInitialDimension);
 
     }
-
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/getSolidMaterials")
     public List<Material> getSolidMaterials() {
         return thermalExpansionService.getSolidMaterialsList();
     }
-
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/getLiquidMaterials")
     public List<Material> getLiquidMaterials() {
         return thermalExpansionService.getLiquidMaterialsList();
