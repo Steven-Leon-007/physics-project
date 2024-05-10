@@ -32,6 +32,7 @@ public class Material implements IMaterial {
                 break;
             case VOLUMETRIC:
                 expansion = 3 * Double.parseDouble(thermalExpansionCoefficient) * initialDimension * (finalTemperature - initialTemperature);
+                break;
         }
         DecimalFormatSymbols symbol = new DecimalFormatSymbols();
         symbol.setDecimalSeparator('.');
