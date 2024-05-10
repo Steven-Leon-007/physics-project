@@ -52,7 +52,7 @@ public class ThermalExpansionService implements IThermalExpansionService {
         expansionResults[1] = calcExpansion(solidMaterialName, ExpansionTypeEnum.VOLUMETRIC, solidInitialTemperature,
                 solidFinalTemperature, solidInitialDimension);
         // Liquid spilled, at String[2].
-        expansionResults[3] = Integer.parseInt(expansionResults[0])+liquidInitialDimension > Integer.parseInt(expansionResults[1])+solidInitialDimension ? (""+ (Integer.parseInt(expansionResults[0])-Integer.parseInt(expansionResults[1]))): "0";
+        expansionResults[3] = Integer.parseInt(expansionResults[0])+liquidInitialDimension > Integer.parseInt(expansionResults[1])+solidInitialDimension ? (""+ (Integer.parseInt(expansionResults[0])+liquidInitialDimension - Integer.parseInt(expansionResults[1])+solidInitialDimension)): "0";
         return expansionResults;
     }
 
