@@ -38,14 +38,17 @@ public class SimulatorController {
     // Under here second endpoint
 
     // Under here third endpoint
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/calculateExpansionSystem")
     public String postMethodName(@RequestBody String solidMaterialName,
-    double solidInitialTemperature,
-    double solidFinalTemperature, double solidInitialDimension, ExpansionTypeEnum expansionType){
+            double solidInitialTemperature,
+            double solidFinalTemperature, double solidInitialDimension, ExpansionTypeEnum expansionType) {
 
-        return thermalExpansionService.calcExpansion(solidMaterialName, expansionType, solidInitialTemperature, solidFinalTemperature, solidInitialDimension);
+        return thermalExpansionService.calcExpansion(solidMaterialName, expansionType, solidInitialTemperature,
+                solidFinalTemperature, solidInitialDimension);
     }
-    
+
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/calculateCompositeSystem")
     public String[] calculateCompositeSystemExpansion(@RequestBody String solidMaterialName,
             double solidInitialTemperature,
@@ -60,11 +63,13 @@ public class SimulatorController {
                 liquidFinalTemperature, liquidInitialDimension);
 
     }
+
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/getSolidMaterials")
     public List<Material> getSolidMaterials() {
         return thermalExpansionService.getSolidMaterialsList();
     }
+
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/getLiquidMaterials")
     public List<Material> getLiquidMaterials() {
