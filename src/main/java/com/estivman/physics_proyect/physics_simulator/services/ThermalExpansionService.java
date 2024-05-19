@@ -22,14 +22,13 @@ public class ThermalExpansionService implements IThermalExpansionService {
 
     @Override
     public Material searchSolidElement(String solidMaterialName) {
-       return SearchElement.searchElement(solidMaterialName, solidMaterialsList);
+        return SearchElement.searchElement(solidMaterialName, solidMaterialsList);
     }
 
     @Override
     public Material searchLiquidElement(String liquidMaterialName) {
-               return SearchElement.searchElement(liquidMaterialName, solidMaterialsList);
+        return SearchElement.searchElement(liquidMaterialName, liquidMaterialsList);
     }
-
 
     @Override
     public String calcExpansion(String materialName, ExpansionTypeEnum expansionType, double initialTemperature,
@@ -44,15 +43,22 @@ public class ThermalExpansionService implements IThermalExpansionService {
             double solidFinalTemperature, double solidInitialDimension,
             String liquidMaterialName, double liquidInitialTemperature, double liquidFinalTemperature,
             double liquidInitialDimension) {
-
         String[] expansionResults = new String[3];
         // Liquid expansion, at String[0].
-        expansionResults[0] = searchLiquidElement(liquidMaterialName).calculateExpansion(ExpansionTypeEnum.VOLUMETRIC,liquidInitialTemperature,liquidFinalTemperature,liquidInitialDimension);
+        expansionResults[0] = searchLiquidElement(liquidMaterialName).calculateExpansion(ExpansionTypeEnum.VOLUMETRIC,
+                liquidInitialTemperature, liquidFinalTemperature, liquidInitialDimension);
         // Solid expansion, at String[1].
         expansionResults[1] = calcExpansion(solidMaterialName, ExpansionTypeEnum.VOLUMETRIC, solidInitialTemperature,
                 solidFinalTemperature, solidInitialDimension);
         // Liquid spilled, at String[2].
-        expansionResults[3] = Integer.parseInt(expansionResults[0])+liquidInitialDimension > Integer.parseInt(expansionResults[1])+solidInitialDimension ? (""+ (Integer.parseInt(expansionResults[0])+liquidInitialDimension - Integer.parseInt(expansionResults[1])+solidInitialDimension)): "0";
+
+                System.out.println(expansionResults[0] + " " + expansionResults[1]);
+
+        expansionResults[2] = Double.parseDouble(expansionResults[0])
+                + liquidInitialDimension > Double.parseDouble(expansionResults[1]) + solidInitialDimension
+                        ? ("" + (Double.parseDouble(expansionResults[0]) + liquidInitialDimension
+                                - Double.parseDouble(expansionResults[1]) + solidInitialDimension))
+                        : "0";
         return expansionResults;
     }
 
@@ -60,7 +66,7 @@ public class ThermalExpansionService implements IThermalExpansionService {
         return solidMaterialsList;
     }
 
-    public List <Material> getLiquidMaterialsList() {
+    public List<Material> getLiquidMaterialsList() {
         return liquidMaterialsList;
     }
 }

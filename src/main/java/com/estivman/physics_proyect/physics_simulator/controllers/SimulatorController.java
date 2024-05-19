@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.estivman.physics_proyect.physics_simulator.dtos.CompositeExpansionDto;
+import com.estivman.physics_proyect.physics_simulator.dtos.ParseMaterialDto;
 import com.estivman.physics_proyect.physics_simulator.models.Material;
 import com.estivman.physics_proyect.physics_simulator.services.ThermalExpansionService;
-import com.estivman.physics_proyect.physics_simulator.utils.ExpansionTypeEnum;
 
 @RestController
 @RequestMapping("/")
@@ -40,28 +41,32 @@ public class SimulatorController {
     // Under here third endpoint
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/calculateExpansionSystem")
-    public String postMethodName(@RequestBody String solidMaterialName,
-            double solidInitialTemperature,
-            double solidFinalTemperature, double solidInitialDimension, ExpansionTypeEnum expansionType) {
-
-        return thermalExpansionService.calcExpansion(solidMaterialName, expansionType, solidInitialTemperature,
-                solidFinalTemperature, solidInitialDimension);
+    public String calcExpansion(@RequestBody ParseMaterialDto request) {
+        return thermalExpansionService.calcExpansion(
+                request.getSolidMaterialName(),
+                request.getExpansionType(),
+                request.getSolidInitialTemperature(),
+                request.getSolidFinalTemperature(),
+                request.getSolidInitialDimension());
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/calculateCompositeSystem")
-    public String[] calculateCompositeSystemExpansion(@RequestBody String solidMaterialName,
-            double solidInitialTemperature,
-            double solidFinalTemperature, double solidInitialDimension,
-            String liquidMaterialName, double liquidInitialTemperature, double liquidFinalTemperature,
-            double liquidInitialDimension) {
+    public String[] calculateCompositeSystemExpansion(@RequestBody CompositeExpansionDto request) {
+        // Extraer los valores del DTO
+        String solidMaterialName = request.getSolidMaterialName();
+        double solidInitialTemperature = request.getSolidInitialTemperature();
+        double solidFinalTemperature = request.getSolidFinalTemperature();
+        double solidInitialDimension = request.getSolidInitialDimension();
+        String liquidMaterialName = request.getLiquidMaterialName();
+        double liquidInitialTemperature = request.getLiquidInitialTemperature();
+        double liquidFinalTemperature = request.getLiquidFinalTemperature();
+        double liquidInitialDimension = request.getLiquidInitialDimension();
 
-        // The position 0 in the array equals to the liquid expansion
-        // The position 1 in the array equals to the solid expansion
-        return thermalExpansionService.calculateCompositeSystemExpansion(solidMaterialName, solidInitialTemperature,
-                solidFinalTemperature, solidInitialDimension, liquidMaterialName, liquidInitialTemperature,
-                liquidFinalTemperature, liquidInitialDimension);
-
+        // Llamar al servicio con los parámetros extraídos
+        return thermalExpansionService.calculateCompositeSystemExpansion(
+                solidMaterialName, solidInitialTemperature, solidFinalTemperature, solidInitialDimension,
+                liquidMaterialName, liquidInitialTemperature, liquidFinalTemperature, liquidInitialDimension);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
